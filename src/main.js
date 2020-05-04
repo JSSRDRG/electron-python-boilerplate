@@ -14,7 +14,11 @@ function createWindow () {
     slashes: true
   })
 
-  mainWindow = new BrowserWindow()
+  mainWindow = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
 
   mainWindow.loadURL(startUrl)
   mainWindow.webContents.openDevTools()
