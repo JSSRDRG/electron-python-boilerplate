@@ -110,3 +110,6 @@ __pycache__/
 
 # VS Code
 .vscode
+
+# Build output
+out

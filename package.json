@@ -7,7 +7,7 @@
     "test": "eslint .",
     "lint-fix": "eslint . --fix",
     "start": "electron .",
-    "build": ""
+    "build": "electron-packager . --out=out"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/JSSRDRG/electron-python-boilerplate#readme",
   "devDependencies": {
     "electron": "^8.2.5",
+    "electron-packager": "^14.2.1",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
