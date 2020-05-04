@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code
+.vscode
