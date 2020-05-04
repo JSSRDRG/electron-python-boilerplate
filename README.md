@@ -1,6 +1,5 @@
 # electron-python-boilerplate
-#### Build cross-platform application with Electron as a Python GUI Framework
----
+
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Clone and run to start developing
