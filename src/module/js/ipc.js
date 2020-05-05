@@ -1,19 +1,22 @@
 
 const { PythonShell } = require('python-shell')
+const zmq = require('zeromq')
+const sock = zmq.socket('rep')
 
 const shell = new PythonShell('src/main.py')
 
-shell.on('message', (message) => {
-  ipc.decode(message)
+sock.bindSync('tcp://127.0.0.1:5555')
+console.log('Bound to port 5555')
+
+sock.on('message', (msg) => {
+  ipc.decode(msg.toString())
+
+  sock.send('hello')
 })
 
 const ipc = {
   decode (input) {
-    // Check if the (input) is start of a new packet
-    const prefix = input.slice(0, 4)
-    if (prefix !== '[py]') return
-
-    const packet = JSON.parse(input.slice(4))
+    const packet = JSON.parse(input)
     // Determine which function to execute
     switch (packet.f) {
       // Console Object
