@@ -1,7 +1,9 @@
 const electron = require('electron')
 const path = require('path')
 const url = require('url')
-const ipc = require('./module/js/ipc.js')
+// const ipc = require('./module/js/ipc.js')
+const Photon = require('./module/js/photon.js')
+const py = new Photon()
 
 const { app, BrowserWindow } = electron
 
