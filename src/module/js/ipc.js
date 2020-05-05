@@ -10,8 +10,6 @@ console.log('Bound to port 5555')
 
 sock.on('message', (msg) => {
   ipc.decode(msg.toString())
-
-  sock.send('hello')
 })
 
 const ipc = {
@@ -19,22 +17,42 @@ const ipc = {
     const packet = JSON.parse(input)
     // Determine which function to execute
     switch (packet.f) {
+      // Document Object
+      case 'dom':
+        this.decodeDOM(packet)
+        break
       // Console Object
       case 'err':
         console.error(packet.args)
+        sock.send(1)
         break
       case 'info':
         console.info(packet.args)
+        sock.send(1)
         break
       case 'log':
         console.log(packet.args)
+        sock.send(1)
         break
       case 'warn':
         console.warn(packet.args)
+        sock.send(1)
         break
       // If no match, throw error.
       default:
         throw new DecodeException(packet.f)
+    }
+  },
+  decodeDOM (packet) {
+    switch (packet.child) {
+      case 'anchors':
+        sock.send(document.anchors)
+        break
+      case 'gebi':
+        sock.send(JSON.stringify(document.getElementById(packet.args)))
+        break
+      default:
+        throw new DecodeException(packet.child)
     }
   },
   ready () {
