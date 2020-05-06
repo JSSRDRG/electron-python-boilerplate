@@ -5,7 +5,7 @@ const zmq = require('zeromq')
 class Photon {
   /**
    * TODO: add option for:
-   *  - Port
+   *  - Port (Parsed to py as shell args)
    */
   constructor () {
     // Start Python execution
